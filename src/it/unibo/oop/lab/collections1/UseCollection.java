@@ -151,13 +151,14 @@ public final class UseCollection {
         		+ "position is in the middle of the collection took " + time4
         		+ "ns (" + time4 / TO_MS2 + "ms)");
         
-        Map<String, Integer> worldMap = new HashMap<>();
+        Map<String, Long> worldMap = new HashMap<>();
         
-        worldMap.put("Africa", 1_110_635_000);
-        worldMap.put("Americas", 972_005_000);
-        worldMap.put("Antartica", 0);
-        worldMap.put("Europe", 742_452_000);
-        worldMap.put("Oceania", 38_304_000);
+        worldMap.put("Africa", 1_110_635_000L);
+        worldMap.put("Americas", 972_005_000L);
+        worldMap.put("Antartica", 0L);
+        worldMap.put("Asia", 4_298_723_000L);
+        worldMap.put("Europe", 742_452_000L);
+        worldMap.put("Oceania", 38_304_000L);
         
         System.out.println(worldMap);
         
