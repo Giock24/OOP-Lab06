@@ -136,10 +136,12 @@ public final class UseCollection {
         		+ "position is in the middle of the collection took " + time3
         		+ "ns (" + time3 / TO_MS2 + "ms)");
         
+        int mid2 = linkedList.size()/TWO;
+        
         long time4 = System.nanoTime();
         
         for (int i = 0; i <= MAX_READING; i++) {
-        	mid++;
+        	mid2++;
         	//System.out.println(linkedList.get(mid));
         }
         
