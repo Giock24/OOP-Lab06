@@ -9,6 +9,11 @@ import java.util.List;
  * 
  */
 public final class UseCollection {
+	
+	private static final int ELEMS = 100_000;
+	private static final int TO_MS = 100_000;
+	private static final int MAX_READING = 1_000;
+	private static final int TWO = 2;
 
     private UseCollection() {
     }
@@ -90,6 +95,57 @@ public final class UseCollection {
     	for (int numbers: arrayList) {
     		System.out.println(numbers);
     	}
+    	
+    	long time = System.nanoTime();
+    	
+    	for (int i = 1; i <= ELEMS; i++) {
+            arrayList.add(i);
+        }
+    	
+    	time = System.nanoTime() - time;
+        System.out.println("Converting " + ELEMS
+                + " int to String and inserting them in a ArrayList took " + time
+                + "ns (" + time / TO_MS + "ms)");
+        
+        long time2 = System.nanoTime();
+    	
+    	for (int i = 1; i <= ELEMS; i++) {
+            linkedList.add(i);
+        }
+    	
+    	time2 = System.nanoTime() - time2;
+        System.out.println("Converting " + ELEMS
+                + " int to String and inserting them in a LinkedList took " + time2
+                + "ns (" + time2 / TO_MS + "ms)");
+        
+        int mid = arrayList.size()/TWO;
+        
+        long time3 = System.nanoTime();
+        
+        for (int i = 0; i <= MAX_READING; i++) {
+        	mid++;
+        	//System.out.println(arrayList.get(mid));
+        }
+        
+        time3 = System.nanoTime() - time3;
+        
+        System.out.println(" reading 1000 times an element whose "
+        		+ " position is in the middle of the collection took " + time3
+        		+ "ns (" + time3 / TO_MS + "ms)");
+        
+        long time4 = System.nanoTime();
+        
+        for (int i = 0; i <= MAX_READING; i++) {
+        	mid++;
+        	//System.out.println(linkedList.get(mid));
+        }
+        
+        time4 = System.nanoTime() - time4;
+        
+        System.out.println(" reading 1000 times an element whose "
+        		+ " position is in the middle of the collection took " + time4
+        		+ "ns (" + time4 / TO_MS + "ms)");
+        
     	
     }
 }
