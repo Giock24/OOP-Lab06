@@ -1,8 +1,10 @@
 package it.unibo.oop.lab.collections1;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Example class using {@link java.util.List} and {@link java.util.Map}.
@@ -13,6 +15,7 @@ public final class UseCollection {
 	private static final int ELEMS = 100_000;
 	private static final int TO_MS = 100_000;
 	private static final int MAX_READING = 1_000;
+	private static final int TO_MS2 = 1_000;
 	private static final int TWO = 2;
 
     private UseCollection() {
@@ -129,9 +132,9 @@ public final class UseCollection {
         
         time3 = System.nanoTime() - time3;
         
-        System.out.println(" reading 1000 times an element whose "
-        		+ " position is in the middle of the collection took " + time3
-        		+ "ns (" + time3 / TO_MS + "ms)");
+        System.out.println("Reading 1000 times an element whose "
+        		+ "position is in the middle of the collection took " + time3
+        		+ "ns (" + time3 / TO_MS2 + "ms)");
         
         long time4 = System.nanoTime();
         
@@ -142,10 +145,26 @@ public final class UseCollection {
         
         time4 = System.nanoTime() - time4;
         
-        System.out.println(" reading 1000 times an element whose "
-        		+ " position is in the middle of the collection took " + time4
-        		+ "ns (" + time4 / TO_MS + "ms)");
+        System.out.println("Reading 1000 times an element whose "
+        		+ "position is in the middle of the collection took " + time4
+        		+ "ns (" + time4 / TO_MS2 + "ms)");
         
-    	
+        Map<String, Integer> worldMap = new HashMap<>();
+        
+        worldMap.put("Africa", 1_110_635_000);
+        worldMap.put("Americas", 972_005_000);
+        worldMap.put("Antartica", 0);
+        worldMap.put("Europe", 742_452_000);
+        worldMap.put("Oceania", 38_304_000);
+        
+        System.out.println(worldMap);
+        
+        long sum = 0;
+        
+        for (long people : worldMap.values()){
+        	sum += people;
+        }
+        
+        System.out.println("Actually in the World we are in Total: " + sum + " People");
     }
 }
