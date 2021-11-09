@@ -1,5 +1,9 @@
 package it.unibo.oop.lab.collections1;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * Example class using {@link java.util.List} and {@link java.util.Map}.
  * 
@@ -63,5 +67,29 @@ public final class UseCollection {
         /*
          * 8) Compute the population of the world
          */
+    	
+    	List<Integer> arrayList = new ArrayList<>();
+    	
+    	for (int population: new Range(1000, 2000)) {
+    		arrayList.add(population);
+    	}
+    	
+    	//System.out.println(arrayList);
+    	
+    	var linkedList = new LinkedList<>(arrayList);
+    	
+    	//System.out.println(linkedList);
+    	
+    	int first = arrayList.get(0);
+    	
+    	arrayList.set(0, arrayList.get(arrayList.size() - 1));
+    	arrayList.set(arrayList.size() - 1, first);
+    	
+    	//System.out.println(arrayList);
+    	
+    	for (int numbers: arrayList) {
+    		System.out.println(numbers);
+    	}
+    	
     }
 }

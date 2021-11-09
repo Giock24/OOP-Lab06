@@ -28,7 +28,7 @@ public final class TestPerformance {
          */
         long time = System.nanoTime();
         /*
-         * Run the benchmark
+         * Run the benchmark (segno)
          */
         for (int i = 1; i <= ELEMS; i++) {
             set.add(Integer.toString(i));
