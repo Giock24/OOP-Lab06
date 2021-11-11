@@ -53,9 +53,8 @@ public class RobotEnvironment {
                 && newY <= RobotEnvironment.WORLD_Y_UPPER_LIMIT) {
             this.position.setX(newX);
             this.position.setY(newY);
-            //return true;
         } else {
-            //return false;
+        	throw new PositionOutOfBoundException(newX , newY);
         }
     }
 
