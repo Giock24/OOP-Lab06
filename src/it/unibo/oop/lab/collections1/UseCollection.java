@@ -172,6 +172,8 @@ public final class UseCollection {
         	sum += people;
         }
         */
+    	
         System.out.println("Actually in the World we are in Total: " + sum + " People");
+        
     }
 }

@@ -1,5 +1,7 @@
 package it.unibo.oop.lab.collections1;
 
+import java.util.Iterator;
+
 public class Range implements Iterable<Integer> {
 
 	private int start;
@@ -10,8 +12,22 @@ public class Range implements Iterable<Integer> {
 		this.stop = stop;
 	}
 	
-	public java.util.Iterator<Integer> iterator() {
-		return new RangeIterator(this.start, this.stop);
+	public Iterator<Integer> iterator() {
+		
+		return new Iterator<Integer>(){
+
+			private int current = Range.this.start;
+			private final int stop = Range.this.stop;
+			
+			public boolean hasNext() {
+				return this.current < this.stop;
+			}
+
+			public Integer next() {
+				return this.current++;
+			}
+			
+		};
 	}
 	
 }
