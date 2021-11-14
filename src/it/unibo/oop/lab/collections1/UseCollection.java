@@ -164,10 +164,14 @@ public final class UseCollection {
         
         long sum = 0;
         
+        for(final Map.Entry<String, Long> entry : worldMap.entrySet()) {
+        	sum = sum + entry.getValue();
+        }
+        /*
         for (long people : worldMap.values()){
         	sum += people;
         }
-        
+        */
         System.out.println("Actually in the World we are in Total: " + sum + " People");
     }
 }
