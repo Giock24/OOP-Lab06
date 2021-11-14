@@ -35,7 +35,11 @@ public class Robot {
      * @return If the Up movement has been performed
      */
     public void moveUp() {
-    	this.moveToPosition(environment.getCurrPosX(), this.environment.getCurrPosY() + Robot.MOVEMENT_DELTA);
+    	if (this.isBatteryEnoughToMove()) {
+    		this.moveToPosition(environment.getCurrPosX(), this.environment.getCurrPosY() + Robot.MOVEMENT_DELTA);
+    	} else {
+    		throw new NotEnoughBatteryException(batteryLevel);
+    	}
     }
 
     /**
@@ -44,7 +48,11 @@ public class Robot {
      * @return If the Down movement has been performed
      */
     public void moveDown() {
-    	this.moveToPosition(this.environment.getCurrPosX(), environment.getCurrPosY() - Robot.MOVEMENT_DELTA);
+    	if (this.isBatteryEnoughToMove()) {
+    		this.moveToPosition(this.environment.getCurrPosX(), environment.getCurrPosY() - Robot.MOVEMENT_DELTA);
+    	} else {
+    		throw new NotEnoughBatteryException(batteryLevel);
+    	}
     }
 
     /**
@@ -89,7 +97,7 @@ public class Robot {
                 this.environment.move(newX, newY);
                 this.log("Moved to position(" + newX + "," + newY + ").");
         } else {
-        	//throw new NotEnoughBatteryException(batteryLevel, MOVEMENT_DELTA_CONSUMPTION);
+        	throw new NotEnoughBatteryException(batteryLevel);
         }
     }
 
