@@ -34,22 +34,34 @@ public class StrictBankAccount implements BankAccount {
     /**
      * 
      * {@inheritDoc}
+     * @param usrID
+     * 			user id id user is different throw a WrongAccountHolderException
+     * @param amount
+     * 			deposit an amount of money
      */
     public void deposit(final int usrID, final double amount) {
         if (checkUser(usrID)) {
             this.balance += amount;
             increaseTransactionsCount();
+        } else {
+        	throw new WrongAccountHolderException(usrID);
         }
     }
 
     /**
      * 
      * {@inheritDoc}
+     * @param usrID
+     * 			user id id user is different throw a WrongAccountHolderException
+     * @param amount
+     * 			withdraw an amount of money
      */
     public void withdraw(final int usrID, final double amount) {
         if (checkUser(usrID) && isWithdrawAllowed(amount)) {
             this.balance -= amount;
             increaseTransactionsCount();
+        } else if (!checkUser(usrID)) {
+        	throw new WrongAccountHolderException(usrID);
         }
     }
 
